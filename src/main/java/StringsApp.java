@@ -1,7 +1,7 @@
 public class StringsApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
-        System.out.println("Strings and basic of text processing");
+        String[] s = new String[]{"strOne", "strTwo", "strThree", "strFour", "strFive"};
 
     }
 }
