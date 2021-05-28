@@ -13,19 +13,25 @@ import java.util.regex.Pattern;
 
 public class TaskOne implements Task {
     int count = 0;
-    String str = new One().s;
+    String[] sA = new One().strArr;
+    String varStr;
+    Pattern pattern = Pattern.compile("[A-Z]");
+    Matcher matcher;
 
     @Override
     public Object call() throws Exception {
-        Pattern pattern = Pattern.compile("[A-Z]");
-        Matcher matcher = pattern.matcher(str);
 
-        while(matcher.find()) {
-            count++;
-//                matcher.replaceAll("_%1");
+        for (int i = 0; i < sA.length; i++){
+            varStr = sA[i];
+            matcher = pattern.matcher(varStr);
+
+           while(matcher.find()) {
+               count++;
+            }
+
         }
-
         System.out.println("Uppercase counter = " + count);
+
         return count;
     }
 }
