@@ -12,26 +12,30 @@ import java.util.regex.Pattern;
      */
 
 public class TaskOne implements Task {
-    int count = 0;
-    String[] sA = new One().strArr;
-    String varStr;
-    Pattern pattern = Pattern.compile("[A-Z]");
-    Matcher matcher;
+    private int count = 0;
+    private String[] strArr = new One().strArr;
+    private Pattern pattern = Pattern.compile(".{0}[a-z][A-Z]");
 
     @Override
     public Object call() throws Exception {
 
-        for (int i = 0; i < sA.length; i++){
-            varStr = sA[i];
-            matcher = pattern.matcher(varStr);
+        for (String varStr : strArr) {
+            Matcher matcher = pattern.matcher(varStr);
 
-           while(matcher.find()) {
-               count++;
+            while (matcher.find()) {
+
+                if (!matcher.find()) {
+                    count++;
+                    System.out.println(" !find: " + varStr);
+//                    matcher.group().replace(matcher.group(), "[_a-z]");
+//                    System.out.println(" group: " + matcher);
+
+                }else {
+                    System.out.println(" group: " + matcher.group());
+                }
             }
-
         }
         System.out.println("Uppercase counter = " + count);
-
         return count;
     }
 }
