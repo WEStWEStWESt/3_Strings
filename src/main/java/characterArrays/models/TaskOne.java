@@ -37,26 +37,26 @@ public class TaskOne implements Task {
                 System.out.println("(" + (i) + ")element: " + " String without UPPERCASE letters. ");
             }
         }
+        System.out.println("arrArr: " + "rAinToFlopRy");
         System.out.println("arrList" + arrList);
-        //System.out.println("Uppercase counter = " + countUpp);
         return countUpp;
     }
 
     private String converter(char[] coincidenceArr) {
-        char[] upChars = new char[coincidenceArr.length];
+        char[] upChars = new char[(coincidenceArr.length + 1)];
         int countUpChar = 0;
         int countLowChar = 0;
 
-        for (int i = 0; i < upChars.length; i++) {
-
+        for (int i = 0; i < coincidenceArr.length; i++) {
             if (Character.isUpperCase(coincidenceArr[i])) {
+                char varUp = coincidenceArr[i];
                 countUpChar = i;
-                upChars[countUpChar - 1] = '_';
-                System.out.print(" isUp: " + upChars[countUpChar - 1] + "  ");
-            } else {
-                countLowChar = i;
-                upChars[countLowChar] = coincidenceArr[i];
-                System.out.print(" * ");
+                upChars[countUpChar] = '_';
+                countUpChar++;
+                upChars[countUpChar] = varUp;
+            } else if (Character.isLowerCase(coincidenceArr[i]) ) {
+                countLowChar = i++;
+                upChars[countLowChar] = coincidenceArr[--i];
             }
         }
         return String.valueOf(upChars);
