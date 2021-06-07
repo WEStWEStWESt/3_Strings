@@ -37,7 +37,7 @@ public class TaskOne implements Task {
                 System.out.println("(" + (i) + ")element: " + " String without UPPERCASE letters. ");
             }
         }
-        System.out.println("arrArr: " + "rAinToFlopRy");
+        System.out.println("arrArr: " + "rootAinToFlopRy");
         System.out.println("arrList" + arrList);
         return countUpp;
     }
@@ -49,14 +49,27 @@ public class TaskOne implements Task {
 
         for (int i = 0; i < coincidenceArr.length; i++) {
             if (Character.isUpperCase(coincidenceArr[i])) {
-                char varUp = coincidenceArr[i];
-                countUpChar = i;
-                upChars[countUpChar] = '_';
-                countUpChar++;
-                upChars[countUpChar] = varUp;
-            } else if (Character.isLowerCase(coincidenceArr[i]) ) {
-                countLowChar = i++;
-                upChars[countLowChar] = coincidenceArr[--i];
+                if (countUpChar <= countLowChar) {
+                    char varUp = coincidenceArr[i];
+                    upChars[countUpChar = i] = '_';
+                    upChars[++countUpChar] = varUp;
+                } else {
+                    char varUp = coincidenceArr[i];
+                    upChars[countUpChar = ++countLowChar] = '_';
+                    upChars[countUpChar] = varUp;
+                }
+            }
+            if (Character.isLowerCase(coincidenceArr[i])) {
+                if (i != 0) {
+                    if (countLowChar < countUpChar) {
+                        countLowChar = ++countUpChar;
+                        upChars[countLowChar] = coincidenceArr[i];
+                    } else {
+                        upChars[++countLowChar] = coincidenceArr[i];
+                    }
+                } else {
+                    upChars[countLowChar] = coincidenceArr[i];
+                }
             }
         }
         return String.valueOf(upChars);
