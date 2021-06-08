@@ -13,10 +13,10 @@ import java.util.regex.Pattern;
      */
 
 public class TaskOne implements Task {
-    private int countUpp = 0;
+    private int countUppStr = 0;
     private String[] strArr = new One().strArr;
     private Pattern pattern = Pattern.compile("[a-z][A-Z]");
-    private ArrayList<String> arrList = new ArrayList<String>();
+    private ArrayList<String> arrList = new ArrayList<>();
 
     @Override
     public Object call() throws Exception {
@@ -26,52 +26,38 @@ public class TaskOne implements Task {
             Matcher matcher = pattern.matcher(string);
 
             if (matcher.find()) {
-                countUpp = i;
-
+                countUppStr = i;
                 char[] charArray = string.toCharArray();
-                arrList.add(countUpp, converter(charArray).toLowerCase());
-
-                System.out.println();
+                arrList.add(countUppStr, converter(charArray));
             } else {
                 arrList.add(i, string);
                 System.out.println("(" + (i) + ")element: " + " String without UPPERCASE letters. ");
             }
         }
-        System.out.println("arrArr: " + "rootAinToFlopRy");
         System.out.println("arrList" + arrList);
-        return countUpp;
+        return countUppStr;
     }
 
     private String converter(char[] coincidenceArr) {
-        char[] upChars = new char[(coincidenceArr.length + 1)];
-        int countUpChar = 0;
-        int countLowChar = 0;
-
-        for (int i = 0; i < coincidenceArr.length; i++) {
-            if (Character.isUpperCase(coincidenceArr[i])) {
-                if (countUpChar <= countLowChar) {
-                    char varUp = coincidenceArr[i];
-                    upChars[countUpChar = i] = '_';
-                    upChars[++countUpChar] = varUp;
-                } else {
-                    char varUp = coincidenceArr[i];
-                    upChars[countUpChar = ++countLowChar] = '_';
-                    upChars[countUpChar] = varUp;
-                }
-            }
-            if (Character.isLowerCase(coincidenceArr[i])) {
-                if (i != 0) {
-                    if (countLowChar < countUpChar) {
-                        countLowChar = ++countUpChar;
-                        upChars[countLowChar] = coincidenceArr[i];
-                    } else {
-                        upChars[++countLowChar] = coincidenceArr[i];
-                    }
-                } else {
-                    upChars[countLowChar] = coincidenceArr[i];
-                }
+        int countUpChars = 0;
+        for (char uppercaseChars : coincidenceArr) {
+            if (uppercaseChars >= 65 && uppercaseChars <= 90) {
+                countUpChars++;
             }
         }
-        return String.valueOf(upChars);
+        char[] newCharsArr = new char[coincidenceArr.length + countUpChars];
+        int charsCounter = 0;
+        int varForOffset = 0;
+        while (charsCounter < coincidenceArr.length) {
+            if (coincidenceArr[charsCounter] >= 65 && coincidenceArr[charsCounter] <= 90 && charsCounter != 0) {
+                newCharsArr[charsCounter + varForOffset] = '_';
+                newCharsArr[charsCounter + (varForOffset + 1)] = Character.toLowerCase(coincidenceArr[charsCounter]);
+                varForOffset++;
+            } else {
+                newCharsArr[charsCounter + varForOffset] = coincidenceArr[charsCounter];
+            }
+            charsCounter++;
+        }
+        return String.valueOf(newCharsArr);
     }
 }

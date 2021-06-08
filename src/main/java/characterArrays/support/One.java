@@ -1,6 +1,5 @@
 package characterArrays.support;
 
 public class One {
-//    public String[] strArr = new String[]{"ooaOne", "tttTwo", "tttcThree", "fffour", "gFive"};
-    public String[] strArr = new String[]{"rootAinTabcFlopRy"};
+    public String[] strArr = new String[]{"rootAinTabFlopRyZero", "tttwo", "tttcThree", "fffour", "gFive"};
 }
