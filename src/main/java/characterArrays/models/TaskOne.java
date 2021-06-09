@@ -13,9 +13,8 @@ import java.util.regex.Pattern;
      */
 
 public class TaskOne implements Task {
-    private int countUppStr = 0;
     private String[] strArr = new One().strArr;
-    private Pattern pattern = Pattern.compile("[a-z][A-Z]");
+    private Pattern pattern = Pattern.compile("[A-Z]");
     private ArrayList<String> arrList = new ArrayList<>();
 
     @Override
@@ -26,16 +25,15 @@ public class TaskOne implements Task {
             Matcher matcher = pattern.matcher(string);
 
             if (matcher.find()) {
-                countUppStr = i;
                 char[] charArray = string.toCharArray();
-                arrList.add(countUppStr, converter(charArray));
+                arrList.add(i, converter(charArray));
             } else {
                 arrList.add(i, string);
-                System.out.println("(" + (i) + ")element: " + " String without UPPERCASE letters. ");
+                System.out.println("(" + i + ")element: " + " String without UPPERCASE letters. ");
             }
         }
         System.out.println("arrList" + arrList);
-        return countUppStr;
+        return arrList;
     }
 
     private String converter(char[] coincidenceArr) {
