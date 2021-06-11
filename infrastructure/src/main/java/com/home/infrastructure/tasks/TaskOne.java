@@ -1,6 +1,6 @@
-package characterArrays.models;
+package com.home.infrastructure.tasks;
 
-import characterArrays.support.One;
+import com.home.infrastructure.support.One;
 import interfaces.Task;
 
 import java.util.ArrayList;
