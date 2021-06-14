@@ -1,7 +1,7 @@
-package com.home.infrastructure.tasks;
+package com.home.tasks.instance.strings;
 
-import com.home.infrastructure.support.One;
-import interfaces.Task;
+import com.home.tasks.support.One;
+import com.home.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
