@@ -1,6 +1,6 @@
 package com.home.tasks.instance.strings;
 
-import com.home.tasks.support.One;
+import com.home.tasks.model.One;
 import com.home.tasks.Task;
 
 import java.util.ArrayList;
