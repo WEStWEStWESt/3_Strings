@@ -1,5 +1,8 @@
 package com.home.tasks.instance.strings;
 
+import com.home.results.model.TaskResults;
+import com.home.results.model.TaskStatus;
+import com.home.tasks.annotation.Case;
 import com.home.tasks.model.One;
 import com.home.tasks.Task;
 
@@ -12,13 +15,14 @@ import java.util.regex.Pattern;
      Преобразовать в snake_case.
      */
 
+@Case
 public class TaskOne implements Task {
     private String[] strArr = new One().strArr;
     private Pattern pattern = Pattern.compile("[A-Z]");
     private ArrayList<String> arrList = new ArrayList<>();
 
     @Override
-    public Object call() throws Exception {
+    public TaskResults call() throws Exception {
 
         for (int i = 0; i < strArr.length; i++) {
             String string = strArr[i];
@@ -33,7 +37,7 @@ public class TaskOne implements Task {
             }
         }
         System.out.println("arrList" + arrList);
-        return arrList;
+        return new TaskResults();
     }
 
     private String converter(char[] coincidenceArr) {
